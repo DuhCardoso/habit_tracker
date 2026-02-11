@@ -9,13 +9,13 @@
   @auth
     <form action="{{ route('auth.logout') }}" method="POST">
       @csrf
-      <button type="submit" class="bg-red-500/75 text-white px-4 py-2 rounded">Sair</button>
+      <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-red-500/95 transition">Sair</button>
     </form>
   @endauth
 
   @guest
     <form action="{{ route('site.login') }}" method="GET">
-      <button class="bg-orange-500/80 text-white px-4 py-2 rounded">Login</button>
+      <button class="bg-orange-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-orange-500/95 transition">Login</button>
     </form>
   @endguest
   </div>
