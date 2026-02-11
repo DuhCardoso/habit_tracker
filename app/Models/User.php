@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -42,5 +43,17 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    // Um usuário pode ter muitos hábitos, então definimos um relacionamento de 1:N (um para muitos entre User e Habit)
+    public function habits(): HasMany
+    {
+        return $this->hasMany(Habit::class);
+    }
+
+    // Um usuário pode ter muitos hábitos, então definimos um relacionamento de 1:N (um para muitos entre User e Habit)
+    public function habitLogs(): HasMany
+    {
+        return $this->hasMany(HabitLog::class);
     }
 }
