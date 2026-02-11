@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-bold mb-4">Faça Login</h1>
 
     <section class="mt-4">
-      <form action="/login" method="POST" class="max-w-md">
+      <form action="{{ route('auth.login') }}" method="POST" class="max-w-md">
         @csrf
 
         @error("email")
