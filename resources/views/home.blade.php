@@ -6,9 +6,9 @@
     <p class="mb-4">Aqui estão seus hábitos:</p>
 
     <ul class="list-disc pl-5">
-      @foreach ($habits as $habit)
-        <li>{{ $habit }}</li>
-      @endforeach
+      <li>Correr</li>
+      <li>Ler</li>
+      <li>Codar</li>
     </ul>
   </main>
 </x-layout>
