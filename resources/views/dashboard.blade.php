@@ -50,6 +50,14 @@
                 <x-icons.trash/>
               </button>
             </form>
+
+            <a href="{{ route('habits.edit', $habit) }}" class="">
+              <button
+              class="bg-green-500 text-white p-1 rounded hover:bg-green-600 transition-colors cursor-pointer"
+              >
+                <x-icons.edit/>
+              </button>
+            </a>
           </li>
         @empty
         <p class="text-gray-600">Você ainda não tem hábitos cadastrados.</p>
