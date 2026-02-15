@@ -10,12 +10,4 @@ class SiteController extends Controller
     {
         return view('home', );
     }
-
-    public function dashboard()
-    {
-        $habits = Auth::user()->habits;
-        $userName = Auth::user()->name;
-
-        return view('dashboard', compact('habits', 'userName'));
-    }
 }

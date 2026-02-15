@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)){
             // Se as credenciais forem válidas, regenera a sessão para evitar ataques de fixação de sessão e redireciona para a página inicial
             $request->session()->regenerate();
-            return redirect()->intended(route('site.dashboard'));
+            return redirect()->intended(route('habits.index'));
         }
 
         // Se as credenciais forem inválidas, redireciona de volta para a página de login com uma mensagem de erro

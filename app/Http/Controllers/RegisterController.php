@@ -23,6 +23,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route(route: "site.dashboard");
+        return redirect()->route(route: "habits.index");
     }
 }

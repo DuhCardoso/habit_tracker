@@ -28,15 +28,8 @@ Route::middleware('auth')->group(function () {
     // LOGOUT
     Route::post('/logout', [LoginController::class,'logout'])->name('auth.logout');
 
-    // DASHBOARD
-    Route::get('/dashboard', [SiteController::class, 'dashboard'])->name('site.dashboard');
-
-    // DASHBOARD -> HABITS
-    Route::get('/dashboard/habits/create', [HabitController::class, 'create'])->name('habits.create');
-    Route::post('/habits/create', [HabitController::class, 'store'])->name('habits.store');
-    Route::delete('/dashboard/habits/{habit}', [HabitController::class, 'destroy'])->name('habits.destroy');
-    Route::get('/dashboard/habits/{habit}/edit', [HabitController::class, 'edit'])->name('habits.edit');
-    Route::put('/dashboard/habits/{habit}/edit', [HabitController::class, 'update'])->name('habits.update');
+    // DASHBOARD/HABITS
+    Route::resource('/dashboard/habits', HabitController::class)->except(['show']);
 
 });
 
