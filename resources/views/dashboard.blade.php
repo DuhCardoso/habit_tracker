@@ -37,6 +37,19 @@
             <span class="text-sm text-gray-600">
                 Concluido: [ {{ $habit->habitLogs->count() }}x ]
             </span>
+
+            {{-- Delete habit --}}
+            <form action="{{ route('habits.destroy', $habit) }}" method="POST">
+              @csrf
+              @method('DELETE')
+
+              <button
+              type="submit"
+              class="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition-colors cursor-pointer"
+              >
+                <x-icons.trash/>
+              </button>
+            </form>
           </li>
         @empty
         <p class="text-gray-600">Você ainda não tem hábitos cadastrados.</p>

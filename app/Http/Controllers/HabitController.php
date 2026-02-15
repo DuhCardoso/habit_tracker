@@ -58,6 +58,12 @@ class HabitController extends Controller
      */
     public function destroy(Habit $habit)
     {
-        //
+        if($habit->user_id !== Auth::id()) {
+            abort(403, 'Este hábito não pertence a você.');
+        }
+
+        $habit->delete();
+
+        return redirect()->route('site.dashboard')->with('success', 'Hábito deletado com sucesso!');
     }
 }
