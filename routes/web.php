@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
 
     // DASHBOARD/HABITS
     Route::resource('/dashboard/habits', HabitController::class)->except(['show']);
+    Route::get('/dashboard/habits/configurar', [HabitController::class,'settings'])->name('habits.settings');
+
 
 });
 
