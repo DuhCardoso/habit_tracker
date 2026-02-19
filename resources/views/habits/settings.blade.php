@@ -3,61 +3,78 @@
 
     <x-navbar />
 
-
     @auth
 
       @session('success')
-        <div class="max-w-max bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <div class="mb-4 max-w-max rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700">
           {{ session('success') }}
         </div>
       @endsession
       <a href="{{ route('habits.create') }}">
-        <button
-          class="bg-orange-500 text-white px-4 py-2 rounded mb-6 hover:bg-orange-600 habit-shadow-lg cursor-pointer">
+        <button class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
           + Habito
         </button>
       </a>
 
       <div>
-        <h2 class="text-lg text-gray-800 mb-3">
+        <h2 class="mb-3 text-lg text-gray-800">
           Configurações dos Habitos
         </h2>
 
-        <ul class="list-disc list-inside">
+        <ul class="list-inside list-disc">
           @forelse($habits as $habit)
-            <li class="flex items-center justify-between gap-2 mb-2 p-2 habit-shadow-lg bg-orange-200">
-              <div class="flex gap-2 items-center">
-                <input type="checkbox" class="w-5 h-5" {{ $habit->is_completed ? 'checked' : '' }} disabled>
+            <li class="habit-shadow-lg mb-2 flex items-center justify-between gap-2 bg-orange-200 p-2">
+              <div class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  class="h-5 w-5"
+                  {{ $habit->is_completed ? 'checked' : '' }}
+                  disabled
+                >
 
-                <p class="font-lg font-bold {{ $habit->is_completed ? 'line-through text-gray-500' : '' }}">
+                <p class="font-lg {{ $habit->is_completed ? 'line-through text-gray-500' : '' }} font-bold">
                   {{ $habit->name }}
                 </p>
               </div>
 
-              <div class="flex gap-2 items-center">
+              <div class="flex items-center gap-2">
                 {{-- Delete habit --}}
-                <form action="{{ route('habits.destroy', $habit) }}" method="POST">
+                <form
+                  action="{{ route('habits.destroy', $habit) }}"
+                  method="POST"
+                >
                   @csrf
                   @method('DELETE')
-                  <button type="submit"
-                    class="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition-colors cursor-pointer habit-shadow">
+                  <button
+                    type="submit"
+                    class="habit-shadow cursor-pointer rounded bg-red-500 p-1 text-white transition-colors hover:bg-red-600"
+                  >
                     <x-icons.trash />
                   </button>
                 </form>
 
                 {{-- Edit habit --}}
-                <a href="{{ route('habits.edit', $habit) }}" class="">
+                <a
+                  href="{{ route('habits.edit', $habit) }}"
+                  class=""
+                >
                   <button
-                    class="bg-green-500 text-white p-1 rounded hover:bg-green-600 transition-colors cursor-pointer habit-shadow">
+                    class="habit-shadow cursor-pointer rounded bg-green-500 p-1 text-white transition-colors hover:bg-green-600"
+                  >
                     <x-icons.edit />
                   </button>
                 </a>
               </div>
             </li>
           @empty
-            <p class="text-gray-600">Você ainda não tem hábitos cadastrados.</p>
-            <a href="{{ route('habits.create') }}" class="text-blue-500 hover:underline">
-              Adicionar novo hábito
+            <p class="text-gray-600">Você ainda não tem
+              hábitos cadastrados.</p>
+            <a href="{{ route('habits.create') }}">
+              <button
+                class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+              >
+                + Habito
+              </button>
             </a>
           @endforelse
         </ul>

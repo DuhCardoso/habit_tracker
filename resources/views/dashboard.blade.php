@@ -5,31 +5,48 @@
 
     @auth
       @session('success')
-        <div class="max-w-max bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <div class="mb-4 max-w-max rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700">
           {{ session('success') }}
         </div>
       @endsession
       <div>
-        <h2 class="text-lg text-gray-700 mb-3">
+        <h2 class="mb-3 text-lg text-gray-700">
           {{ date('d/m/y') }}
         </h2>
 
-        <ul class="list-disc list-inside">
-          @forelse($habits as $habit)
-            <li class="flex items-center gap-2 mb-2 p-2 habit-shadow-lg bg-orange-200">
-              <div class="flex gap-2 items-center">
-                <input type="checkbox" class="w-5 h-5" {{ $habit->is_completed ? 'checked' : '' }} disabled>
+        <ul class="list-inside list-disc">
 
-                <p class="font-lg font-bold {{ $habit->is_completed ? 'line-through text-gray-500' : '' }}">
+          @forelse($habits as $habit)
+            <li class="habit-shadow-lg mb-2 flex items-center gap-2 bg-orange-200 p-2">
+              <form
+                class="flex items-center gap-2"
+                action="{{ route('habits.toggle', $habit->id) }}"
+                method="POST"
+                id="form-{{ $habit->id }}"
+              >
+                @csrf
+                <input
+                  type="checkbox"
+                  class="h-5 w-5"
+                  {{ $habit->wasCompletedToday() ? 'checked' : '' }}
+                  onChange="document.getElementById('form-{{ $habit->id }}').submit()"
+                >
+
+                <p class="font-lg {{ $habit->is_completed ? 'line-through text-gray-500' : '' }} font-bold">
                   {{ $habit->name }}
                 </p>
-              </div>
+              </form>
             </li>
 
           @empty
-            <p class="text-gray-600">Você ainda não tem hábitos cadastrados.</p>
-            <a href="{{ route('habits.create') }}" class="text-blue-500 hover:underline">
-              Adicionar novo hábito
+            <p class="text-gray-600">Você ainda não tem
+              hábitos cadastrados.</p>
+            <a href="{{ route('habits.create') }}">
+              <button
+                class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+              >
+                + Habito
+              </button>
             </a>
           @endforelse
         </ul>

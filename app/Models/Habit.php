@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +13,7 @@ class Habit extends Model
     /** @use HasFactory<\Database\Factories\HabitFactory> */
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'user_id',
         'name'
     ];
@@ -29,4 +30,10 @@ class Habit extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function wasCompletedToday(): bool
+    {
+        return $this->habitLogs
+            ->where('completed_at', Carbon::today()->toDateString())
+            ->isNotEmpty();
+    }
 }
