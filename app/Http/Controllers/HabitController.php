@@ -102,4 +102,22 @@ class HabitController extends Controller
 
         return redirect()->route('habits.index')->with('success', $message);
     }
+
+    public function history()
+    {
+        $selectedYear = Carbon::now()->year;
+
+        $startDate = Carbon::create($selectedYear, "1", "1");
+        $endDate = Carbon::create($selectedYear, "12", "31");
+
+
+
+        $habits = Auth::user()->habits()
+            ->with(['habitLogs' => function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('completed_at', [$startDate, $endDate]);
+            }])
+            ->get();
+
+        return view('habits.history', compact('habits', 'selectedYear'));
+    }
 }
