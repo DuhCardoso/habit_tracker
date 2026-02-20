@@ -108,7 +108,7 @@ class HabitController extends Controller
         $selectedYear = Carbon::now()->year;
 
         $startDate = Carbon::create($selectedYear, "1", "1");
-        $endDate = Carbon::create($selectedYear, "12", "31");
+        $endDate = Carbon::create($selectedYear, "12", "31", "23", "59", "59");
 
 
 
