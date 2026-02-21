@@ -7,7 +7,7 @@
 @endphp
 
 <div class="mb-6">
-  {{-- NOME --}}
+  {{-- Name --}}
   <h2 class="text-lg font-bold">
     {{ $habit->name }}
   </h2>

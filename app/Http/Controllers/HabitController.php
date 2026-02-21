@@ -58,7 +58,7 @@ class HabitController extends Controller
 
         $habit->update($request->all());
 
-        return redirect()->route('habits.index')->with('success', 'Habito atuliazado!');
+        return redirect()->route('habits.index')->with('success', 'Habito atuliazado com suceso!');
     }
 
     /**
@@ -70,7 +70,7 @@ class HabitController extends Controller
 
         $habit->delete();
 
-        return redirect()->route('habits.index')->with('success', 'Hábito deletado!');
+        return redirect()->route('habits.index')->with('warning', 'Hábito deletado!');
     }
 
     public function settings()
@@ -90,17 +90,19 @@ class HabitController extends Controller
 
         if ($log) {
             $log->delete();
-            $message = 'Hábito desmarcado.';
+            $alert = 'warning';
+            $message = 'Hábito desmarcado!';
         } else {
             HabitLog::create([
                 'user_id' => Auth::user()->id,
                 'habit_id' => $habit->id,
                 'completed_at' => $today,
             ]);
-            $message = 'Hábito concluido.';
+            $alert = 'success';
+            $message = 'Hábito concluido!';
         }
 
-        return redirect()->route('habits.index')->with('success', $message);
+        return redirect()->route('habits.index')->with($alert, $message);
     }
 
     public function history(?int $year = null)
