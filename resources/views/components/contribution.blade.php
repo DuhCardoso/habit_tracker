@@ -7,15 +7,10 @@
 @endphp
 
 <div class="mb-6">
-  {{-- NOME + ANO --}}
-  <div class="mb-3 flex items-center justify-between">
-    <h2 class="text-lg font-bold">
-      {{ $habit->name }}
-    </h2>
-    <span class="text-sm font-semibold text-gray-600">
-      {{ $selectedYear }}
-    </span>
-  </div>
+  {{-- NOME --}}
+  <h2 class="text-lg font-bold">
+    {{ $habit->name }}
+  </h2>
 
   {{-- GRID --}}
   <div class="habit-shadow-lg bg-orange-50 p-2">
