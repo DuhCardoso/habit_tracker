@@ -36,6 +36,5 @@
       @endforelse
     </div>
 
-    </ul>
   </main>
 </x-layout>
