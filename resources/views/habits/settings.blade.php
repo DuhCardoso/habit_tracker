@@ -25,14 +25,7 @@
           @forelse($habits as $habit)
             <li class="habit-shadow-lg mb-2 flex items-center justify-between gap-2 bg-orange-200 p-2">
               <div class="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  class="h-5 w-5"
-                  {{ $habit->is_completed ? 'checked' : '' }}
-                  disabled
-                >
-
-                <p class="font-lg {{ $habit->is_completed ? 'line-through text-gray-500' : '' }} font-bold">
+                <p class="font-lg font-bold">
                   {{ $habit->name }}
                 </p>
               </div>

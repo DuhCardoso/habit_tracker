@@ -36,7 +36,7 @@
                   onChange="document.getElementById('form-{{ $habit->id }}').submit()"
                 >
 
-                <p class="font-lg {{ $habit->is_completed ? 'line-through text-gray-500' : '' }} font-bold">
+                <p class="font-lg {{ $habit->wasCompletedToday() ? 'line-through text-gray-500' : '' }} font-bold">
                   {{ $habit->name }}
                 </p>
               </form>
