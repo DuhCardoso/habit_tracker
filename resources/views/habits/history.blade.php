@@ -1,5 +1,5 @@
 <x-layout>
-  <main class="container m-auto mt-20 max-w-7xl">
+  <main class="container m-auto mt-20 max-w-5xl">
 
     <x-navbar />
     @auth
