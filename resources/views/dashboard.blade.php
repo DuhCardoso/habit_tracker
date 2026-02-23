@@ -6,9 +6,9 @@
     {{-- Main --}}
     <div>
 
-      <h2 class="mb-3 text-lg text-gray-700">
-        {{ date('d/m/y') }}
-      </h2>
+      <x-title>
+        {{ Carbon\Carbon::now()->locale('pt-BR')->translatedFormat('l, d \d\e F') }}
+      </x-title>
 
       <ul class="list-inside list-disc">
 
@@ -35,18 +35,18 @@
           </li>
 
         @empty
-          <p class="text-gray-600">Você ainda não tem
+          <p class="mb-2 text-gray-600">Você ainda não tem
             hábitos cadastrados.</p>
-          <a href="{{ route('habits.create') }}">
-            <button
-              class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-            >
-              + Habito
-            </button>
-          </a>
         @endforelse
       </ul>
 
+      <a href="{{ route('habits.create') }}">
+        <button
+          class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+        >
+          + Habito
+        </button>
+      </a>
     </div>
   </main>
 </x-layout>

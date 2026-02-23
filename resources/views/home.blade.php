@@ -1,14 +1,9 @@
 <x-layout>
-  <main class="container mx-auto p-10 ">
+  <main class="container m-auto mt-20 max-w-5xl text-center">
 
-    <h1 class="text-2xl font-bold mb-4">Home!</h1>
+    <h1 class="pt-20 text-3xl font-bold">Home!</h1>
 
     <p class="mb-4">Aqui estão seus hábitos:</p>
 
-    <ul class="list-disc pl-5">
-      <li>Correr</li>
-      <li>Ler</li>
-      <li>Codar</li>
-    </ul>
   </main>
 </x-layout>

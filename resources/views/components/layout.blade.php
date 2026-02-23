@@ -32,7 +32,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="relative flex min-h-screen flex-col bg-orange-100 font-mono">
+<body class="habit-bg relative flex min-h-screen flex-col font-mono">
   {{-- Hearder --}}
   <x-header />
 

@@ -1,5 +1,5 @@
 <x-layout>
-  <main class="container mx-auto p-10">
+  <main class="container m-auto mt-20 max-w-5xl">
     <section class="habit-shadow-lg mx-auto mt-4 max-w-xl rounded border-2 bg-white p-10">
       <h1 class="mb-4 text-3xl font-bold text-gray-800">Editar Hábito</h1>
 

@@ -109,7 +109,7 @@ class HabitController extends Controller
     {
         $selectedYear = $year ?? Carbon::now()->year;
 
-        $fristYearWithHabitCompleted = Auth::user()->habitLogs()->oldest('completed_at')->first()->completed_at;
+        $fristYearWithHabitCompleted = Auth::user()->habitLogs()->oldest('completed_at')->first()->completed_at ?? Carbon::now()->year;
 
         $avalibeYear = range(Carbon::createFromDate($fristYearWithHabitCompleted)->year, Carbon::now()->year);
 

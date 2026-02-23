@@ -1,39 +1,62 @@
-<header class="bg-white border-b-2  ">
-  <div class="flex items-center justify-between p-4 max-w-7xl mx-auto">
+<header class="border-b-2 bg-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between p-4">
     {{-- Logo --}}
-    <a class=" flex gap-2 items-center rounded font-bold " href="{{ route('site.index') }}">
-      <button class=" px-2 py-1 bg-orange-500  cursor-pointer habit-shadow-lg">
+    <a
+      class="flex items-center gap-2 rounded font-bold"
+      href="{{ route('site.index') }}"
+    >
+      <button class="habit-shadow-lg cursor-pointer bg-orange-500 px-2 py-1">
         HT
       </button>
       <span>Habit Tracker</span>
     </a>
 
-    <div class="flex items-center gap-2 ">
+    <div class="flex items-center gap-2">
       @guest
-        <form action="{{ route('site.register') }}" method="GET">
-          <button class="px-2 py-1 font-bold rounded cursor-pointer hover:bg-gray-200 habit-shadow-lg">Cadastrar</button>
+        <form
+          action="{{ route('site.register') }}"
+          method="GET"
+        >
+          <button class="habit-shadow-lg cursor-pointer rounded px-2 py-1 font-bold hover:bg-gray-200">Cadastrar</button>
         </form>
-        <form action="{{ route('site.login') }}" method="GET">
+        <form
+          action="{{ route('site.login') }}"
+          method="GET"
+        >
           <button
-            class="bg-orange-500 text-white font-bold px-2 py-1 rounded cursor-pointer hover:bg-orange-600 habit-shadow-lg">Logar</button>
+            class="habit-shadow-lg cursor-pointer rounded bg-orange-500 px-2 py-1 font-bold text-white hover:bg-orange-600"
+          >Logar</button>
         </form>
       @endguest
 
       @auth
-        <form action="{{ route('habits.index') }}" method="GET">
-          <button type="submit"
-            class="px-2 py-1 font-bold rounded cursor-pointer hover:bg-gray-200 habit-shadow-lg">Habitos</button>
+        <form
+          action="{{ route('habits.index') }}"
+          method="GET"
+        >
+          <button
+            type="submit"
+            class="habit-shadow-lg cursor-pointer rounded px-2 py-1 font-bold hover:bg-gray-200"
+          >Dashboard</button>
         </form>
-        <form action="{{ route('auth.logout') }}" method="POST">
+        <form
+          action="{{ route('auth.logout') }}"
+          method="POST"
+        >
           @csrf
-          <button type="submit"
-            class="bg-red-500 text-white font-bold px-2 py-1 rounded cursor-pointer hover:bg-red-600 habit-shadow-lg">Sair</button>
+          <button
+            type="submit"
+            class="habit-shadow-lg cursor-pointer rounded bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-600"
+          >Sair</button>
         </form>
       @endauth
 
       {{-- Github --}}
-      <a href="https://github.com/DuhCardoso/habit_tracker" target="_blank"
-        class="flex items-center gap-1 hover:bg-gray-200 transition habit-shadow-lg px-2 py-1 rounded cursor-pointer">
+      <a
+        href="https://github.com/DuhCardoso/habit_tracker"
+        target="_blank"
+        class="habit-shadow-lg flex cursor-pointer items-center gap-1 rounded px-2 py-1 transition hover:bg-gray-200"
+      >
         <x-icons.githubIcon />
       </a>
     </div>

@@ -3,11 +3,15 @@
 
     <x-navbar />
 
+    <x-title>
+      Historico
+    </x-title>
+
     <div class="flex gap-2">
       @foreach ($avalibeYear as $year)
         <a
           href="{{ route('habits.history', $year) }}"
-          class="{} {{ $selectedYear == $year ? 'bg-orange-500 border-3' : 'bg-white habit-shadow-lg' }} my-4 cursor-pointer p-2 font-bold"
+          class="{{ $selectedYear == $year ? 'bg-orange-500 border-3' : 'bg-white habit-shadow-lg' }} mb-4 cursor-pointer p-2 font-bold"
         >
           {{ $year }}
         </a>
@@ -23,14 +27,15 @@
         />
       @empty
         <div>
-          <p class="text-black">
+          <p class="mb-2 text-black">
             Nenhum hábito para exibir histórico.
           </p>
-          <a
-            href="{{ route('habits.create') }}"
-            class="underline"
-          >
-            Crie um novo hábito
+          <a href="{{ route('habits.create') }}">
+            <button
+              class="habit-shadow-lg mb-6 cursor-pointer rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+            >
+              + Habito
+            </button>
           </a>
         </div>
       @endforelse
